@@ -47,7 +47,7 @@ export const products = [
     { id: 26, nombre: 'Medialunas x6', precio: 980, categoria: 'Panadería', categoriaId: 'panaderia', imagen: '🥐', unidad: 'un' },
 
     // Bebidas
-    { id: 27, nombre: 'Coca-Cola 2.25L', precio: 1850, categoria: 'Bebidas', categoriaId: 'bebidas', imagen: 'src/assets/productos/coca-cola-225.jpg', unidad: 'un' },
+    { id: 27, nombre: 'Coca-Cola 2.25L', precio: 1850, categoria: 'Bebidas', categoriaId: 'bebidas', imagen: '/assets/productos/gaseosas/coca-cola-225.jpg', unidad: 'un' },
     { id: 28, nombre: 'Agua Mineral 2L', precio: 650, categoria: 'Bebidas', categoriaId: 'bebidas', imagen: '💧', unidad: 'un' },
     { id: 29, nombre: 'Jugo de Naranja 1L', precio: 1200, categoria: 'Bebidas', categoriaId: 'bebidas', imagen: '🧃', unidad: 'un' },
     { id: 30, nombre: 'Cerveza Lata', precio: 850, categoria: 'Bebidas', categoriaId: 'bebidas', imagen: '🍺', unidad: 'un' },
