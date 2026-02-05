@@ -20,10 +20,13 @@ function HomePage() {
   );
 }
 
+import ScrollToTop from './components/ScrollToTop';
+
 function App() {
   return (
     <CartProvider>
       <Router>
+        <ScrollToTop />
         <Navbar />
         <main>
           <Routes>
