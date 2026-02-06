@@ -51,6 +51,13 @@
     box-shadow: var(--shadow-sm);
 }
 
+/* Hide mobile-only elements by default (desktop) */
+.mobile-filter-toggle,
+.sidebar-header-mobile,
+.mobile-filter-overlay {
+    display: none;
+}
+
 .categories-sidebar h3 {
     font-size: 1.1rem;
     margin-bottom: 1rem;

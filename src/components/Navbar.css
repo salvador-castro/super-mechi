@@ -453,9 +453,42 @@
         transform: translate(-50%, -50%);
         width: 90%;
         max-width: 360px;
+        max-height: 85vh;
+    }
+
+    .cart-preview-items {
+        max-height: 200px;
     }
 
     .cart-preview-overlay {
         background: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Fix cart item layout on mobile */
+    .cart-preview-item {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .preview-item-info {
+        flex: 1 1 80px;
+    }
+
+    .preview-item-name {
+        font-size: 0.8rem;
+    }
+
+    .preview-item-qty {
+        order: 3;
+    }
+
+    .preview-item-remove {
+        order: 4;
+        width: 24px;
+        height: 24px;
+    }
+
+    .preview-qty-input {
+        width: 35px;
     }
 }

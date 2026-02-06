@@ -11,20 +11,20 @@ export const categories = [
 
 export const products = [
     // Frutas
-    { id: 1, nombre: 'Manzana Roja', precio: 350, categoria: 'Frutas', categoriaId: 'frutas', imagen: '🍎', unidad: 'kg' },
+    /* { id: 1, nombre: 'Manzana Roja', precio: 350, categoria: 'Frutas', categoriaId: 'frutas', imagen: '🍎', unidad: 'kg' },
     { id: 2, nombre: 'Banana', precio: 450, categoria: 'Frutas', categoriaId: 'frutas', imagen: '🍌', unidad: 'kg' },
     { id: 3, nombre: 'Naranja', precio: 380, categoria: 'Frutas', categoriaId: 'frutas', imagen: '🍊', unidad: 'kg' },
     { id: 4, nombre: 'Limón', precio: 320, categoria: 'Frutas', categoriaId: 'frutas', imagen: '🍋', unidad: 'kg' },
     { id: 5, nombre: 'Pera', precio: 420, categoria: 'Frutas', categoriaId: 'frutas', imagen: '🍐', unidad: 'kg' },
-    { id: 6, nombre: 'Uva', precio: 650, categoria: 'Frutas', categoriaId: 'frutas', imagen: '🍇', unidad: 'kg' },
+    { id: 6, nombre: 'Uva', precio: 650, categoria: 'Frutas', categoriaId: 'frutas', imagen: '🍇', unidad: 'kg' }, */
 
     // Verduras
-    { id: 7, nombre: 'Tomate', precio: 380, categoria: 'Verduras', categoriaId: 'verduras', imagen: '🍅', unidad: 'kg' },
+    /* { id: 7, nombre: 'Tomate', precio: 380, categoria: 'Verduras', categoriaId: 'verduras', imagen: '🍅', unidad: 'kg' },
     { id: 8, nombre: 'Lechuga', precio: 280, categoria: 'Verduras', categoriaId: 'verduras', imagen: '🥬', unidad: 'un' },
     { id: 9, nombre: 'Zanahoria', precio: 220, categoria: 'Verduras', categoriaId: 'verduras', imagen: '🥕', unidad: 'kg' },
     { id: 10, nombre: 'Papa', precio: 180, categoria: 'Verduras', categoriaId: 'verduras', imagen: '🥔', unidad: 'kg' },
     { id: 11, nombre: 'Cebolla', precio: 200, categoria: 'Verduras', categoriaId: 'verduras', imagen: '🧅', unidad: 'kg' },
-    { id: 12, nombre: 'Pimiento', precio: 450, categoria: 'Verduras', categoriaId: 'verduras', imagen: '🫑', unidad: 'kg' },
+    { id: 12, nombre: 'Pimiento', precio: 450, categoria: 'Verduras', categoriaId: 'verduras', imagen: '🫑', unidad: 'kg' }, */
 
     // Lácteos
     { id: 13, nombre: 'Leche Entera 1L', precio: 850, categoria: 'Lácteos', categoriaId: 'lacteos', imagen: '🥛', unidad: 'un' },

@@ -382,4 +382,50 @@
     .step-line {
         width: 50px;
     }
+
+    /* Fix checkout item layout on mobile */
+    .checkout-item {
+        flex-wrap: wrap;
+        gap: 0.5rem 0.75rem;
+    }
+
+    .item-emoji {
+        font-size: 1.25rem;
+    }
+
+    .item-info {
+        flex: 1 1 100px;
+        min-width: 80px;
+    }
+
+    .item-name {
+        font-size: 0.8rem;
+    }
+
+    .item-qty-controls {
+        order: 4;
+    }
+
+    .item-price {
+        min-width: 60px;
+        font-size: 0.85rem;
+    }
+
+    .item-remove {
+        width: 24px;
+        height: 24px;
+        order: 5;
+    }
+
+    .checkout-qty-btn {
+        width: 22px;
+        height: 22px;
+        font-size: 0.9rem;
+    }
+
+    .checkout-qty-input {
+        width: 36px;
+        height: 22px;
+        font-size: 0.8rem;
+    }
 }
