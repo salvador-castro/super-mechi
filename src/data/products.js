@@ -7,6 +7,7 @@ export const categories = [
     { id: 'panaderia', name: 'Panadería', icon: '🍞', color: '#d97706' },
     { id: 'limpieza', name: 'Limpieza', icon: '🧹', color: '#06b6d4' },
     { id: 'almacen', name: 'Almacén', icon: '🍿', color: '#f59e0b' },
+    { id: 'vinos', name: 'Vinos', icon: '🍷', color: '#8b5cf6' },
 ];
 
 export const products = [
@@ -51,7 +52,7 @@ export const products = [
     { id: 28, nombre: 'Agua Mineral Glaciar 2L', precio: 650, categoria: 'Bebidas', categoriaId: 'bebidas', imagen: '/assets/productos/aguas/glaciar-2L.jpg', unidad: 'un' },
     { id: 29, nombre: 'Coca-Cola Zero 2.25L', precio: 1850, categoria: 'Bebidas', categoriaId: 'bebidas', imagen: '/assets/productos/gaseosas/coca-cola-zero-225.jpg', unidad: 'un' },
     { id: 30, nombre: 'Sprite 2.25L', precio: 1850, categoria: 'Bebidas', categoriaId: 'bebidas', imagen: '/assets/productos/gaseosas/sprite-225.jpg', unidad: 'un' },
-    { id: 31, nombre: 'Catena Zapata Malbec', precio: 2500, categoria: 'Bebidas', categoriaId: 'bebidas', imagen: '/assets/productos/vinos/catena-zapata-malbec.jpg', unidad: 'un' },
+    { id: 31, nombre: 'Catena Zapata Malbec', precio: 2500, categoria: 'Bebidas', categoriaId: 'vinos', imagen: '/assets/productos/vinos/catena-zapata-malbec.jpg', unidad: 'un' },
 
     // Limpieza
     { id: 32, nombre: 'Detergente 750ml', precio: 980, categoria: 'Limpieza', categoriaId: 'limpieza', imagen: '🧴', unidad: 'un' },
