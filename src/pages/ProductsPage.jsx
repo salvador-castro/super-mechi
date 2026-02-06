@@ -11,7 +11,19 @@ const ProductsPage = () => {
     const [activeCategory, setActiveCategory] = useState('todos');
     const [filteredProducts, setFilteredProducts] = useState(products);
     const [showCheckout, setShowCheckout] = useState(false);
+    const [showFilters, setShowFilters] = useState(false);
     const { cartItems, addToCart, updateQuantity, getCartTotal, getCartCount } = useCart();
+
+    useEffect(() => {
+        if (showFilters) {
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+        }
+        return () => {
+            document.body.classList.remove('no-scroll');
+        };
+    }, [showFilters]);
 
     useEffect(() => {
         const categoryFromUrl = searchParams.get('categoria');
@@ -22,11 +34,14 @@ const ProductsPage = () => {
             setActiveCategory('todos');
             setFilteredProducts(products);
         }
+        setShowFilters(false);
     }, [searchParams]);
 
     const handleCategoryChange = (categoryId) => {
         setActiveCategory(categoryId);
         setFilteredProducts(getProductsByCategory(categoryId));
+        setShowFilters(false);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     const getItemQuantity = (productId) => {
@@ -72,11 +87,28 @@ const ProductsPage = () => {
                     </Link>
                     <h1>Nuestros Productos</h1>
                     <p>Seleccioná los productos que necesitás y te los llevamos a domicilio</p>
+
+                    <button
+                        className="mobile-filter-toggle"
+                        onClick={() => setShowFilters(!showFilters)}
+                    >
+                        <span>🔍</span> Filtrar por categorías
+                    </button>
                 </div>
             </header>
 
             <div className="products-layout container">
-                <aside className="categories-sidebar">
+                {/* Overlay for mobile filters */}
+                <div
+                    className={`mobile-filter-overlay ${showFilters ? 'open' : ''}`}
+                    onClick={() => setShowFilters(false)}
+                />
+
+                <aside className={`categories-sidebar ${showFilters ? 'open' : ''}`}>
+                    <div className="sidebar-header-mobile">
+                        <h3>Categorías</h3>
+                        <button onClick={() => setShowFilters(false)}>✕</button>
+                    </div>
                     <h3>Categorías</h3>
                     <ul className="category-list">
                         <li>

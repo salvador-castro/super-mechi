@@ -97,6 +97,12 @@ body {
   overflow-x: hidden;
 }
 
+body.no-scroll {
+  overflow: hidden !important;
+  height: 100vh;
+  touch-action: none;
+}
+
 /* Container */
 .container {
   max-width: var(--container-max);
