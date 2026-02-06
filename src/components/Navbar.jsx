@@ -58,156 +58,164 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`navbar ${isScrolled || !isHomePage ? 'scrolled' : ''}`}>
-            <div className="navbar-container">
-                <Link to="/" className="navbar-logo">
-                    <span className="logo-icon">🛒</span>
-                    <span className="logo-text">
-                        Autoservicio <span className="logo-highlight">Mechi</span>
-                    </span>
-                </Link>
+        <>
+            <nav className={`navbar ${isScrolled || !isHomePage ? 'scrolled' : ''}`}>
+                <div className="navbar-container">
+                    <Link to="/" className="navbar-logo">
+                        <span className="logo-icon">🛒</span>
+                        <span className="logo-text">
+                            Autoservicio <span className="logo-highlight">Mechi</span>
+                        </span>
+                    </Link>
 
-                <ul className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
-                    {navLinks.map((link) => (
-                        <li key={link.href}>
-                            {link.isAnchor ? (
-                                <a
-                                    href={link.href}
-                                    onClick={() => setIsMenuOpen(false)}
+                    <ul className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
+                        {navLinks.map((link) => (
+                            <li key={link.href}>
+                                {link.isAnchor ? (
+                                    <a
+                                        href={link.href}
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        {link.label}
+                                    </a>
+                                ) : (
+                                    <Link
+                                        to={link.href}
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        {link.label}
+                                    </Link>
+                                )}
+                            </li>
+                        ))}
+
+                        {/* Ver Carrito - solo si hay items */}
+                        {cartCount > 0 && (
+                            <li className="nav-cart">
+                                <button
+                                    className="cart-link"
+                                    onClick={() => setShowCartPreview(!showCartPreview)}
                                 >
-                                    {link.label}
-                                </a>
-                            ) : (
-                                <Link
-                                    to={link.href}
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    {link.label}
+                                    <span className="cart-icon-nav">🛒</span>
+                                    <span className="cart-details">
+                                        <span className="cart-count-text">{cartCount} {cartCount === 1 ? 'producto' : 'productos'}</span>
+                                        <span className="cart-total-nav">{formatPrice(getCartTotal())}</span>
+                                    </span>
+                                </button>
+                            </li>
+                        )}
+
+                        {/* Hacer Pedido - solo si NO hay items en carrito */}
+                        {cartCount === 0 && (
+                            <li className="nav-cta">
+                                <Link to="/productos" className="btn btn-accent" onClick={() => setIsMenuOpen(false)}>
+                                    Hacer Pedido
                                 </Link>
-                            )}
-                        </li>
-                    ))}
+                            </li>
+                        )}
+                    </ul>
 
-                    {/* Ver Carrito - solo si hay items */}
-                    {cartCount > 0 && (
-                        <li className="nav-cart">
-                            <button
-                                className="cart-link"
-                                onClick={() => setShowCartPreview(!showCartPreview)}
-                            >
-                                <span className="cart-icon-nav">🛒</span>
-                                <span className="cart-details">
-                                    <span className="cart-count-text">{cartCount} {cartCount === 1 ? 'producto' : 'productos'}</span>
-                                    <span className="cart-total-nav">{formatPrice(getCartTotal())}</span>
-                                </span>
-                            </button>
-
-                            {/* Cart Preview Dropdown */}
-                            {showCartPreview && (
-                                <div className="cart-preview">
-                                    <div className="cart-preview-header">
-                                        <h4>Tu Carrito</h4>
-                                        <button
-                                            className="cart-preview-close"
-                                            onClick={() => setShowCartPreview(false)}
-                                        >
-                                            ×
-                                        </button>
-                                    </div>
-
-                                    <div className="cart-preview-items">
-                                        {cartItems.map((item) => (
-                                            <div key={item.id} className="cart-preview-item">
-                                                <ProductThumb imagen={item.imagen} alt={item.nombre} size="md" />
-                                                <div className="preview-item-info">
-                                                    <span className="preview-item-name">{item.nombre}</span>
-                                                    <span className="preview-item-price">{formatPrice(item.precio)}/{item.unidad}</span>
-                                                </div>
-                                                <div className="preview-item-qty">
-                                                    <button
-                                                        className="preview-qty-btn"
-                                                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                                    >
-                                                        −
-                                                    </button>
-                                                    <input
-                                                        type="number"
-                                                        className="preview-qty-input"
-                                                        value={item.quantity}
-                                                        onChange={(e) => handleQuantityChange(item.id, e.target.value)}
-                                                        min="0"
-                                                    />
-                                                    <button
-                                                        className="preview-qty-btn"
-                                                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                                    >
-                                                        +
-                                                    </button>
-                                                </div>
-                                                <button
-                                                    className="preview-item-remove"
-                                                    onClick={() => removeFromCart(item.id)}
-                                                >
-                                                    🗑️
-                                                </button>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    <div className="cart-preview-footer">
-                                        <div className="preview-total">
-                                            <span>Total:</span>
-                                            <span>{formatPrice(getCartTotal())}</span>
-                                        </div>
-                                        <button
-                                            className="btn btn-accent cart-preview-btn"
-                                            onClick={() => {
-                                                setShowCartPreview(false);
-                                                setShowCheckout(true);
-                                            }}
-                                        >
-                                            Finalizar Pedido
-                                        </button>
-                                    </div>
-                                </div>
-                            )}
-                        </li>
-                    )}
-
-                    {/* Hacer Pedido - solo si NO hay items en carrito */}
-                    {cartCount === 0 && (
-                        <li className="nav-cta">
-                            <Link to="/productos" className="btn btn-accent" onClick={() => setIsMenuOpen(false)}>
-                                Hacer Pedido
-                            </Link>
-                        </li>
-                    )}
-                </ul>
-
-                <button
-                    className={`navbar-toggle ${isMenuOpen ? 'active' : ''}`}
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    aria-label="Toggle menu"
-                >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
+                    <button
+                        className={`navbar-toggle ${isMenuOpen ? 'active' : ''}`}
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        aria-label="Toggle menu"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
 
             {/* Overlay for cart preview */}
-            {showCartPreview && (
-                <div
-                    className="cart-preview-overlay"
-                    onClick={() => setShowCartPreview(false)}
-                />
-            )}
+            {
+                showCartPreview && (
+                    <div
+                        className="cart-preview-overlay"
+                        onClick={() => setShowCartPreview(false)}
+                    />
+                )
+            }
+
+            {/* Cart Preview Modal */}
+            {
+                showCartPreview && (
+                    <div className="cart-preview">
+                        <div className="cart-preview-header">
+                            <h4>Tu Carrito</h4>
+                            <button
+                                className="cart-preview-close"
+                                onClick={() => setShowCartPreview(false)}
+                            >
+                                ×
+                            </button>
+                        </div>
+
+                        <div className="cart-preview-items">
+                            {cartItems.map((item) => (
+                                <div key={item.id} className="cart-preview-item">
+                                    <ProductThumb imagen={item.imagen} alt={item.nombre} size="md" />
+                                    <div className="preview-item-info">
+                                        <span className="preview-item-name">{item.nombre}</span>
+                                        <span className="preview-item-price">{formatPrice(item.precio)}/{item.unidad}</span>
+                                    </div>
+                                    <div className="preview-item-qty">
+                                        <button
+                                            className="preview-qty-btn"
+                                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                                        >
+                                            −
+                                        </button>
+                                        <input
+                                            type="number"
+                                            className="preview-qty-input"
+                                            value={item.quantity}
+                                            onChange={(e) => handleQuantityChange(item.id, e.target.value)}
+                                            min="0"
+                                        />
+                                        <button
+                                            className="preview-qty-btn"
+                                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                        >
+                                            +
+                                        </button>
+                                    </div>
+                                    <button
+                                        className="preview-item-remove"
+                                        onClick={() => removeFromCart(item.id)}
+                                    >
+                                        🗑️
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="cart-preview-footer">
+                            <div className="preview-total">
+                                <span>Total:</span>
+                                <span>{formatPrice(getCartTotal())}</span>
+                            </div>
+                            <button
+                                className="btn btn-accent cart-preview-btn"
+                                onClick={() => {
+                                    setShowCartPreview(false);
+                                    setShowCheckout(true);
+                                }}
+                            >
+                                Finalizar Pedido
+                            </button>
+                        </div>
+                    </div>
+                )
+            }
 
             {/* Checkout Modal */}
-            {showCheckout && (
-                <Checkout onClose={() => setShowCheckout(false)} />
-            )}
-        </nav>
+            {
+                showCheckout && (
+                    <Checkout onClose={() => setShowCheckout(false)} />
+                )
+            }
+        </>
     );
 };
 

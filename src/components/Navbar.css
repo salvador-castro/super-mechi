@@ -119,6 +119,10 @@
     background: var(--text-primary);
 }
 
+.navbar-toggle.active span {
+    background: #ffffff !important;
+}
+
 .navbar-toggle.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
@@ -447,13 +451,17 @@
     }
 
     .cart-preview {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: translate(-50%, -50%) !important;
         width: 90%;
         max-width: 360px;
         max-height: 85vh;
+        z-index: 2000;
+        animation: none !important;
     }
 
     .cart-preview-items {
@@ -461,7 +469,10 @@
     }
 
     .cart-preview-overlay {
+        position: fixed;
+        inset: 0;
         background: rgba(0, 0, 0, 0.5);
+        z-index: 1999;
     }
 
     /* Fix cart item layout on mobile */
