@@ -102,6 +102,82 @@ const Navbar = () => {
                                         <span className="cart-total-nav">{formatPrice(getCartTotal())}</span>
                                     </span>
                                 </button>
+                                {/* Overlay for cart preview */}
+                                {showCartPreview && (
+                                    <div
+                                        className="cart-preview-overlay"
+                                        onClick={() => setShowCartPreview(false)}
+                                    />
+                                )}
+                                {/* Cart Preview Modal */}
+                                {showCartPreview && (
+                                    <div className="cart-preview">
+                                        <div className="cart-preview-header">
+                                            <h4>Tu Carrito</h4>
+                                            <button
+                                                className="cart-preview-close"
+                                                onClick={() => setShowCartPreview(false)}
+                                            >
+                                                ×
+                                            </button>
+                                        </div>
+
+                                        <div className="cart-preview-items">
+                                            {cartItems.map((item) => (
+                                                <div key={item.id} className="cart-preview-item">
+                                                    <ProductThumb imagen={item.imagen} alt={item.nombre} size="md" />
+                                                    <div className="preview-item-info">
+                                                        <span className="preview-item-name">{item.nombre}</span>
+                                                        <span className="preview-item-price">{formatPrice(item.precio)}/{item.unidad}</span>
+                                                    </div>
+                                                    <div className="preview-item-qty">
+                                                        <button
+                                                            className="preview-qty-btn"
+                                                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                                                        >
+                                                            −
+                                                        </button>
+                                                        <input
+                                                            type="number"
+                                                            className="preview-qty-input"
+                                                            value={item.quantity}
+                                                            onChange={(e) => handleQuantityChange(item.id, e.target.value)}
+                                                            min="0"
+                                                        />
+                                                        <button
+                                                            className="preview-qty-btn"
+                                                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                                        >
+                                                            +
+                                                        </button>
+                                                    </div>
+                                                    <button
+                                                        className="preview-item-remove"
+                                                        onClick={() => removeFromCart(item.id)}
+                                                    >
+                                                        🗑️
+                                                    </button>
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        <div className="cart-preview-footer">
+                                            <div className="preview-total">
+                                                <span>Total:</span>
+                                                <span>{formatPrice(getCartTotal())}</span>
+                                            </div>
+                                            <button
+                                                className="btn btn-accent cart-preview-btn"
+                                                onClick={() => {
+                                                    setShowCartPreview(false);
+                                                    setShowCheckout(true);
+                                                }}
+                                            >
+                                                Finalizar Pedido
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
                             </li>
                         )}
 
@@ -127,87 +203,7 @@ const Navbar = () => {
                 </div>
             </nav>
 
-            {/* Overlay for cart preview */}
-            {
-                showCartPreview && (
-                    <div
-                        className="cart-preview-overlay"
-                        onClick={() => setShowCartPreview(false)}
-                    />
-                )
-            }
 
-            {/* Cart Preview Modal */}
-            {
-                showCartPreview && (
-                    <div className="cart-preview">
-                        <div className="cart-preview-header">
-                            <h4>Tu Carrito</h4>
-                            <button
-                                className="cart-preview-close"
-                                onClick={() => setShowCartPreview(false)}
-                            >
-                                ×
-                            </button>
-                        </div>
-
-                        <div className="cart-preview-items">
-                            {cartItems.map((item) => (
-                                <div key={item.id} className="cart-preview-item">
-                                    <ProductThumb imagen={item.imagen} alt={item.nombre} size="md" />
-                                    <div className="preview-item-info">
-                                        <span className="preview-item-name">{item.nombre}</span>
-                                        <span className="preview-item-price">{formatPrice(item.precio)}/{item.unidad}</span>
-                                    </div>
-                                    <div className="preview-item-qty">
-                                        <button
-                                            className="preview-qty-btn"
-                                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                        >
-                                            −
-                                        </button>
-                                        <input
-                                            type="number"
-                                            className="preview-qty-input"
-                                            value={item.quantity}
-                                            onChange={(e) => handleQuantityChange(item.id, e.target.value)}
-                                            min="0"
-                                        />
-                                        <button
-                                            className="preview-qty-btn"
-                                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                        >
-                                            +
-                                        </button>
-                                    </div>
-                                    <button
-                                        className="preview-item-remove"
-                                        onClick={() => removeFromCart(item.id)}
-                                    >
-                                        🗑️
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="cart-preview-footer">
-                            <div className="preview-total">
-                                <span>Total:</span>
-                                <span>{formatPrice(getCartTotal())}</span>
-                            </div>
-                            <button
-                                className="btn btn-accent cart-preview-btn"
-                                onClick={() => {
-                                    setShowCartPreview(false);
-                                    setShowCheckout(true);
-                                }}
-                            >
-                                Finalizar Pedido
-                            </button>
-                        </div>
-                    </div>
-                )
-            }
 
             {/* Checkout Modal */}
             {

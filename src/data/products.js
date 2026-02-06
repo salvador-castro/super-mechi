@@ -48,10 +48,10 @@ export const products = [
 
     // Bebidas
     { id: 27, nombre: 'Coca-Cola 2.25L', precio: 1850, categoria: 'Bebidas', categoriaId: 'bebidas', imagen: '/assets/productos/gaseosas/coca-cola-225.jpg', unidad: 'un' },
-    { id: 28, nombre: 'Agua Mineral 2L', precio: 650, categoria: 'Bebidas', categoriaId: 'bebidas', imagen: '💧', unidad: 'un' },
-    { id: 29, nombre: 'Jugo de Naranja 1L', precio: 1200, categoria: 'Bebidas', categoriaId: 'bebidas', imagen: '🧃', unidad: 'un' },
-    { id: 30, nombre: 'Cerveza Lata', precio: 850, categoria: 'Bebidas', categoriaId: 'bebidas', imagen: '🍺', unidad: 'un' },
-    { id: 31, nombre: 'Vino Tinto', precio: 2500, categoria: 'Bebidas', categoriaId: 'bebidas', imagen: '🍷', unidad: 'un' },
+    { id: 28, nombre: 'Agua Mineral Glaciar 2L', precio: 650, categoria: 'Bebidas', categoriaId: 'bebidas', imagen: '/assets/productos/aguas/glaciar-2L.jpg', unidad: 'un' },
+    { id: 29, nombre: 'Coca-Cola Zero 2.25L', precio: 1850, categoria: 'Bebidas', categoriaId: 'bebidas', imagen: '/assets/productos/gaseosas/coca-cola-zero-225.jpg', unidad: 'un' },
+    { id: 30, nombre: 'Sprite 2.25L', precio: 1850, categoria: 'Bebidas', categoriaId: 'bebidas', imagen: '/assets/productos/gaseosas/sprite-225.jpg', unidad: 'un' },
+    { id: 31, nombre: 'Catena Zapata Malbec', precio: 2500, categoria: 'Bebidas', categoriaId: 'bebidas', imagen: '/assets/productos/vinos/catena-zapata-malbec.jpg', unidad: 'un' },
 
     // Limpieza
     { id: 32, nombre: 'Detergente 750ml', precio: 980, categoria: 'Limpieza', categoriaId: 'limpieza', imagen: '🧴', unidad: 'un' },
